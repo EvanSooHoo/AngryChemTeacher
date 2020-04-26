@@ -12,7 +12,7 @@
     ></v-textarea>
     <div class="my-2">
         <!--<v-btn @click="buttonPressed()" small>Submit</v-btn>-->
-        <v-btn v-on:click="buttonPressed()" small>Submit</v-btn>
+        <v-btn @click="buttonPressed" small>Submit</v-btn>
 
       </div>
   </v-container>
@@ -27,17 +27,18 @@ export default {
 
   components: {
   },
-
-  data: () => ({
-    //
-    inputAnswer: "",
-
-    methods: {
+  methods: {
       buttonPressed () {
         console.log('Button pressed. value of input answer is ' + this.inputAnswer);
       },
       
     },
+
+  data: () => ({
+    //
+    inputAnswer: "",
+
+    
   }),
 };
 </script>
