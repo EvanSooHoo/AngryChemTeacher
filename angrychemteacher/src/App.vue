@@ -29,7 +29,9 @@ export default {
   },
   methods: {
       buttonPressed () {
+        this.clickCount++;
         console.log('Button pressed. value of input answer is ' + this.inputAnswer);
+        console.log('Value of click count is ' + this.clickCount); 
       },
       
     },
@@ -37,6 +39,7 @@ export default {
   data: () => ({
     //
     inputAnswer: "",
+    clickCount: 0
 
     
   }),
