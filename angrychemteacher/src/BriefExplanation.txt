@@ -1,0 +1,7 @@
+First, a brief explanation:
+This program will throw you random chemistry questions
+The program is designed to adapt depending on what answers are given
+Most questions expect a specific answer, like a number, letter, word or phrase"
+If you have something like 3 O2 (In writing, the 2 is written below the O), 3 is a coefficient and 2 is a subscript
+To balance chemical equations, simply write the coefficients.  For example, the program may expect the line 2 3 1
+For short answer questions, just write whatever comes to mind.  The program will look for key words
