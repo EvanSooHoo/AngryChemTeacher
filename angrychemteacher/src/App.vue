@@ -1,8 +1,9 @@
   <template>
   <v-app>
-    
-    <p>Insert chem question here</p>
     <v-card>
+      <v-card-title primary-title class="justify-center">
+        <p>Insert chem question here</p>
+      </v-card-title>
       <v-container fluid>
         <v-textarea
           v-model="inputAnswer"
@@ -13,13 +14,19 @@
         ></v-textarea>
 
         <!--<v-btn @click="buttonPressed()" small>Submit</v-btn>-->
-        <v-layout row>
-          <v-col cols="6" offset="5">
-            <div>
-              <v-btn @click="buttonPressed" small>Submit</v-btn>
-            </div>
+        <v-row no-gutters>
+          <v-col>
+            <v-row justify="center">
+                <v-btn @click="buttonPressed" small>Submit</v-btn>
+            </v-row >
           </v-col>
-        </v-layout>
+        </v-row>
+      </v-container>
+    </v-card>
+    <p class="text-center">Lecture section</p>
+    <v-card>
+      <v-container fluid>
+        <v-textarea value="This is clearable text."></v-textarea>
       </v-container>
     </v-card>
   </v-app>
