@@ -4,6 +4,9 @@
       <v-card-title primary-title class="justify-center">
         <p>{{ questionText }}</p>
       </v-card-title>
+      <v-card-text primary-title class="justify-center headline font-weight-bold">
+        <center>{{questionTextLineTwo}}</center>
+      </v-card-text>
       <v-container fluid>
         <v-textarea
           v-model="inputAnswer"
@@ -62,7 +65,7 @@
         </v-col>
         <v-col cols="12" sm="6" md="12">
           <v-row justify="center">
-            <v-btn @click="balanceButtonPressed" small>Submit!</v-btn>
+            <v-btn :disabled="lockBalanceButton" @click="balanceButtonPressed" small>Submit!</v-btn>
           </v-row>
         </v-col>
       </v-row>
@@ -95,7 +98,6 @@ export default {
       }
     },
     validateBalance(firstCoeff, secondCoeff, thirdCoeff) {
-      console.log('we are getting the numbers ' + firstCoeff + ' plus ' + secondCoeff + ' plus ' + thirdCoeff);
       if(firstCoeff == 2 && secondCoeff == 3 && thirdCoeff == 2) {
         return true;
       } else {
@@ -118,6 +120,7 @@ export default {
         this.firstElement = "Fe";
         this.secondElement = "Cl";
         this.productElement = "FeCl";
+        this.lockBalanceButton = false;
       }
       /*
       else if(this.clickCount == 2) {
@@ -128,13 +131,16 @@ export default {
     balanceButtonPressed() {
        this.clickCount++;
        var isCorrect = this.validateBalance(parseInt(this.firstCoeff), parseInt(this.secondCoeff), parseInt(this.thirdCoeff)); 
-       this.questionText = 'IS THAT THE ANSWER, CLASS?\n';  
+       this.questionText = 'IS THAT THE ANSWER, CLASS?';
        if(isCorrect) {
          
-         this.questionText += 'YES';
+         this.questionTextLineTwo += 'YES';
        } else {
-         this.questionText += 'NO';
+         this.questionTextLineTwo += 'NO';
        }   
+       this.lockBalanceButton = true;
+
+
     }
   },
 
@@ -144,7 +150,9 @@ export default {
     clickCount: 0,
     questionText:
       "\nWelcome to Ay Nako! Enter your name and hit submit to proceed",
+    questionTextLineTwo: "",
     gradeValue: "",
+    lockBalanceButton: true,
     firstElement: "",
     secondElement: "",
     productElement: "",
