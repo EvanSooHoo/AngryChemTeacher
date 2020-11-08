@@ -81,21 +81,25 @@ export default {
   methods: {
     processName(inputName) {
       inputName = inputName.toLowerCase();
-      if (inputName === "kai") {
+      inputName = inputName.trim();
+      console.log('value of inputName is ' + inputName);
+      console.log('type is ' + typeof(inputName));
+      if (inputName.includes('kai')) {
         this.questionText =
           "KAI?!  GET OUT OF MY CLASS.  Just kidding.  You're a very good student.";
         this.firstGrade = "A";
-      } else if (inputName === "zaid") {
+      } else if (inputName.includes("zaid")) {
         this.questionText = "Zaid? Rock on";
-      } else if (inputName === "15/25") {
+      } else if (inputName.includes("15/25")) {
         this.questionText = "Bonus activated";
-      } else if (inputName === "david" || inputName === "jon") {
+      } else if (inputName.includes("david") || inputName.includes("jon")) {
         this.firstGrade = "A";
-      } else if (inputName === "stanley") {
+      } else if (inputName.includes("stanley")) {
         this.firstGrade = "A+";
       } else {
         this.firstGrade = "B+";
       }
+      this.questionText += "(click submit to continue)";
     },
     validateBalance(firstCoeff, secondCoeff, thirdCoeff) {
       if(firstCoeff == 2 && secondCoeff == 3 && thirdCoeff == 2) {
@@ -111,7 +115,7 @@ export default {
       );
       console.log("Value of click count is " + this.clickCount);
       this.processName(this.inputAnswer);
-      if (this.clickCount == 1) {
+      if (this.clickCount == 2) {
         var fullStr =
           this.inputAnswer +
           ", come to the board. Prove that you deserve your " +
@@ -122,14 +126,14 @@ export default {
         this.productElement = "FeCl";
         this.lockBalanceButton = false;
       }
-      /*
-      else if(this.clickCount == 2) {
-        
+      
+      else if(this.clickCount == 3) {
+        this.questionText = 'DO NOW';
+        this.questionTextLineTwo = 'This is a short answer question.  \nYou are to write everything you know about the atom.\n\nWhat is it made of?  \nWhat is its significance?\n\nYou will be given a score out of 100 based on your short answer response:';  
       }
-      */
+      
     },
     balanceButtonPressed() {
-       this.clickCount++;
        var isCorrect = this.validateBalance(parseInt(this.firstCoeff), parseInt(this.secondCoeff), parseInt(this.thirdCoeff)); 
        this.questionText = 'IS THAT THE ANSWER, CLASS?';
        if(isCorrect) {
@@ -138,9 +142,8 @@ export default {
        } else {
          this.questionTextLineTwo += 'NO';
        }   
+       this.questionTextLineTwo += ' (Click submit to continue)'
        this.lockBalanceButton = true;
-
-
     }
   },
 
