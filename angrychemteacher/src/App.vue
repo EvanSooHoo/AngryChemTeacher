@@ -24,7 +24,7 @@
     <p class="text-center">Lecture section</p>
     <v-card>
       <v-container fluid>
-        <v-textarea value="This is clearable text."></v-textarea>
+        <v-textarea></v-textarea>
       </v-container>
     </v-card>
     <v-container>
@@ -32,31 +32,38 @@
       <v-spacer></v-spacer>
       <v-row>
         <v-col cols="12" sm="6" md="2">
-          <v-text-field label="Outlined" outlined></v-text-field>
+          <v-text-field v-model="firstCoeff" outlined></v-text-field>
         </v-col>
 
         <v-col cols="12" sm="6" md="2">
           <h1>
-            {{ firstElement }}<sub>{{firstSubscript}}</sub>
+            {{ firstElement }}<sub>{{ firstSubscript }}</sub>
           </h1>
         </v-col>
 
         <v-col cols="12" sm="6" md="2">
-          <v-text-field label="Outlined" outlined></v-text-field>
-        </v-col>
-
-        <v-col cols="12" sm="6" md="2">
-          <h1>{{ secondElement }}<sub>{{secondSubscript}}</sub></h1>
-        </v-col>
-
-        <v-col cols="12" sm="6" md="2">
-          <v-text-field label="Outlined" outlined></v-text-field>
+          <v-text-field v-model="secondCoeff" outlined></v-text-field>
         </v-col>
 
         <v-col cols="12" sm="6" md="2">
           <h1>
-            {{ productElement }}<sub>{{thirdSubscript}}</sub>
+            {{ secondElement }}<sub>{{ secondSubscript }}</sub>
           </h1>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="2">
+          <v-text-field v-model="thirdCoeff" outlined></v-text-field>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="2">
+          <h1>
+            {{ productElement }}<sub>{{ thirdSubscript }}</sub>
+          </h1>
+        </v-col>
+        <v-col cols="12" sm="6" md="12">
+          <v-row justify="center">
+            <v-btn @click="balanceButtonPressed" small>Submit!</v-btn>
+          </v-row>
         </v-col>
       </v-row>
     </v-container>
@@ -87,6 +94,14 @@ export default {
         this.firstGrade = "B+";
       }
     },
+    validateBalance(firstCoeff, secondCoeff, thirdCoeff) {
+      console.log('we are getting the numbers ' + firstCoeff + ' plus ' + secondCoeff + ' plus ' + thirdCoeff);
+      if(firstCoeff == 2 && secondCoeff == 3 && thirdCoeff == 2) {
+        return true;
+      } else {
+        return false;
+      }
+    },
     buttonPressed() {
       this.clickCount++;
       console.log(
@@ -98,15 +113,28 @@ export default {
         var fullStr =
           this.inputAnswer +
           ", come to the board. Prove that you deserve your " +
-          this.firstGrade;
+          this.firstGrade + ' by balancing the chemical equation below';
         this.questionText = fullStr;
         this.firstElement = "Fe";
-        this.firstSubscript = "2";
         this.secondElement = "Cl";
-        this.secondSubscript = "3";
         this.productElement = "FeCl";
-        this.thirdSubscript = "3";
       }
+      /*
+      else if(this.clickCount == 2) {
+        
+      }
+      */
+    },
+    balanceButtonPressed() {
+       this.clickCount++;
+       var isCorrect = this.validateBalance(parseInt(this.firstCoeff), parseInt(this.secondCoeff), parseInt(this.thirdCoeff)); 
+       this.questionText = 'IS THAT THE ANSWER, CLASS?\n';  
+       if(isCorrect) {
+         
+         this.questionText += 'YES';
+       } else {
+         this.questionText += 'NO';
+       }   
     }
   },
 
@@ -122,7 +150,10 @@ export default {
     productElement: "",
     firstSubscript: "",
     secondSubscript: "",
-    thirdSubscript: ""
+    thirdSubscript: "",
+    firstCoeff: "",
+    secondCoeff: "",
+    thirdCoeff: ""
   })
 };
 </script>
