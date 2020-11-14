@@ -21,7 +21,7 @@
         <v-row no-gutters>
           <v-col>
             <v-row justify="center">
-              <v-btn @click="buttonPressed" small>Submit</v-btn>
+              <v-btn @click="buttonPressed" :disabled="!lockBalanceButton" small>Submit</v-btn>
             </v-row>
           </v-col>
         </v-row>
@@ -96,7 +96,7 @@ export default {
       } else {
           this.reason += "\nYou wrote nothing";
       }
-      if (inputDN.search("neutron") != -1 && inputDN.seach("proton") != -1
+      if (inputDN.search("neutron") != -1 && inputDN.search("proton") != -1
 
               && inputDN.search("electron") != -1) {
 
@@ -131,18 +131,24 @@ export default {
         this.questionText =
           "KAI?!  GET OUT OF MY CLASS.  Just kidding.  You're a very good student.";
         this.firstGrade = "A";
+        this.questionText += "(click submit to continue)";
       } else if (inputName.includes("zaid")) {
         this.questionText = "Zaid? Rock on";
+        this.questionText += "(click submit to continue)";
       } else if (inputName.includes("15/25")) {
         this.questionText = "Bonus activated";
+        this.questionText += "(click submit to continue)";
       } else if (inputName.includes("david") || inputName.includes("jon")) {
         this.firstGrade = "A";
+        this.questionText += "(click submit to continue)";
       } else if (inputName.includes("stanley")) {
         this.firstGrade = "A+";
+        this.questionText += "(click submit to continue)";
       } else {
         this.firstGrade = "B+";
+        this.questionText = "(click submit to continue)";
       }
-      this.questionText += "(click submit to continue)";
+      
     },
     validateBalance(firstCoeff, secondCoeff, thirdCoeff) {
       if(firstCoeff == 2 && secondCoeff == 3 && thirdCoeff == 2) {
