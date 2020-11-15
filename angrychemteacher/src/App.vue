@@ -36,7 +36,7 @@
     <p class="text-center">Lecture section</p>
     <v-card>
       <v-container fluid>
-        <v-textarea></v-textarea>
+        <v-textarea>Lecture1</v-textarea>
       </v-container>
     </v-card>
     <v-container>
@@ -100,6 +100,7 @@
 </template>
 
 <script>
+import Lecture1 from './Lecture1.txt';
 export default {
   name: "App",
 
@@ -136,6 +137,7 @@ export default {
       }
     },
     processName(inputName) {
+      console.log({Lecture1})
       inputName = inputName.toLowerCase();
       inputName = inputName.trim();
       console.log("value of inputName is " + inputName);
