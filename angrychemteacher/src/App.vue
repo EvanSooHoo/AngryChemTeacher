@@ -94,7 +94,7 @@ export default {
       if (inputDN.length >= 1) {
           this.score += 50;
       } else {
-          this.reason += "\nYou wrote nothing";
+          this.reason += " you wrote nothing";
       }
       if (inputDN.search("neutron") != -1 && inputDN.search("proton") != -1
 
@@ -104,7 +104,7 @@ export default {
 
       } else {
 
-          this.reason += "\n-You did not mention ALL THREE sub-atomic particles";
+          this.reason += " you did not mention ALL THREE sub-atomic particles";
 
       }
 
@@ -116,7 +116,7 @@ export default {
 
       } else {
 
-          this.reason += "\n-You did not say it's the building block of all things";
+          this.reason += " you did not say it's the building block of all things";
 
       }
 
@@ -182,7 +182,11 @@ export default {
       }
       else if(this.clickCount == 4) {
         this.parseDoNow(this.inputAnswer);
-        this.questionText = 'Your score is ' + this.score + ' because ' + this.reason;
+        this.questionText = 'Your score is ' + this.score + ' because ' + this.reason + ' (Click to continue)';
+        
+      }
+      else if(this.clickCount == 5) {
+        this.questionText = "All right class, time for your lesson.";
       }
 
     },

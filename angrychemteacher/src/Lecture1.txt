@@ -1,0 +1,43 @@
+Lesson 1:  Introduction to chemistry
+
+Just for the hell of it, I'll spend a day discussing the scientific method and another day discussing how CFC damaged the ozone. 
+
+Chemistry, by defintion, is the study of matter and the changes that it undergoes. 
+In this class, you will learn a variety of subjects.  Unifying concepts will continually repeat. 
+For example, you will continually use the concept of Conservation of Mass.  It will help you balance out chemical equations, for example. 
+
+You really should read the book, but below are a few concepts that will come up again and again in this course. 
+
+Quantiative data is data that consists of numerical information.  Qualatative data is based simply on observations. 
+Percent error is the amount error divided by the accepted value 
+
+In this class, you will frequently use scientific notation and SI units. 
+
+When you round, you keep the same number of SIGNIFICANT FIGURES.  For info on significant figures, go to page 39 in your chemistry textbook.
+
+The Law of Conservation of Mass is the most important rule in chemistry.  Mass is neither created nor destroyed in a chemical reaction 
+Matter is affected by physical and chemical changes.  A chmical change actually changes a substance's composition 
+A substance is a form of matter with a uniform and unchanging composition.  A mixture is a blend of two or more pure substances 
+
+Homogenous mixtures have a constant composition throughout.  In heterogeneous mixtures, individual substances remain distinct 
+Solutions are mixtures.  Mixtures can be separated by physical means. 
+
+Matter is either a mixture or a substance.  A substance is either an element or a compound. 
+ELEMENTS are substances that CANNOT BE BROKEN DOWN into simpler substances 
+
+(Aside) When doing labs, do not fuck around 
+
+The first math concept you'll come across in this course is conversion.  It's an extremely straight-forward concept 
+Say you want to convert 50 centimeters into meters.  Take the given and multiply it by a conversion factor. 
+For example, in this case, you take 50 centimeters, and multiply it by 1  METER OVER 100 CENTIMETERS. 
+The fraction, or conversion factor, is equal to one. You probably could have done this calcultaion mentally, but using DIMENSIONAL ANALYSIS, the method involving the fraction, will prove useful in more complicated chemistry equations. 
+
+That's all for day one.  Below are a few last tips in the introduction 
+
+-Unless you really want to, don't bring the chemistry book back and fourth.  It's online, and a PDF version is downloadable. 
+
+-Of all the resources out there, one of the most valuable is Khan Academy.  He can be found on Youtube 
+
+-Some homework solutions are available on a site called whitechemistry.net 
+
+-When you're really stuck, don't be afraid to Google for help. 
