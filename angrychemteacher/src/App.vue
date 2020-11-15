@@ -36,10 +36,14 @@
     <p class="text-center">Lecture section</p>
     <v-card>
       <v-container fluid>
-        <v-card value="lecture1Text">{{lecture1Text}}</v-card>
+        <v-card value="lecture1Text"
+          ><v-card-text v-html="lecture1Text"></v-card-text
+        ></v-card>
+
         <v-row class="text-right">
-          <v-col cols="12" sm="6" md="12" >
-            <v-btn  :disabled="lockLecture1" small color="green">Lecture 1
+          <v-col cols="12" sm="6" md="12">
+            <v-btn :disabled="lockLecture1" small color="green"
+              >Lecture 1
             </v-btn>
           </v-col>
         </v-row>
@@ -215,6 +219,10 @@ export default {
         this.questionText = "All right class, time for your lesson.";
         this.lockLecture1 = false;
         this.lecture1Text = lecture1;
+        this.lecture1Text = this.lecture1Text.replace(
+          /(?:\r\n|\r|\n)/g,
+          "<br/>"
+        );
       }
     },
     balanceButtonPressed() {
@@ -255,7 +263,7 @@ export default {
     score: 0,
     reason: "",
     lockLecture1: true,
-    lecture1Text: "",
+    lecture1Text: ""
   })
 };
 </script>
