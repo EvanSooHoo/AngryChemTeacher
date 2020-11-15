@@ -21,7 +21,13 @@
         <v-row no-gutters>
           <v-col>
             <v-row justify="center">
-              <v-btn @click="buttonPressed" :disabled="!lockBalanceButton" small>Submit</v-btn>
+              <v-btn
+                @click="buttonPressed"
+                :disabled="!lockBalanceButton"
+                color="primary"
+                small
+                >Submit</v-btn
+              >
             </v-row>
           </v-col>
         </v-row>
@@ -37,31 +43,42 @@
       <h1 class="text-center">Balance the chemical equation</h1>
       <v-spacer></v-spacer>
       <v-row>
-        <v-col cols="12" sm="6" md="2">
+        <v-col cols="12" sm="6" md="1">
           <v-text-field v-model="firstCoeff" outlined></v-text-field>
         </v-col>
 
-        <v-col cols="12" sm="6" md="2">
+        <v-col cols="12" sm="6" md="1">
           <h1>
             {{ firstElement }}<sub>{{ firstSubscript }}</sub>
           </h1>
         </v-col>
 
         <v-col cols="12" sm="6" md="2">
+          <v-icon large color="blue darken-2">
+            mdi-plus
+          </v-icon>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="1">
           <v-text-field v-model="secondCoeff" outlined></v-text-field>
         </v-col>
 
-        <v-col cols="12" sm="6" md="2">
+        <v-col cols="12" sm="6" md="1">
           <h1>
             {{ secondElement }}<sub>{{ secondSubscript }}</sub>
           </h1>
         </v-col>
-
         <v-col cols="12" sm="6" md="2">
+          <v-icon large color="blue darken-2">
+            mdi-arrow-right
+          </v-icon>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="1">
           <v-text-field v-model="thirdCoeff" outlined></v-text-field>
         </v-col>
 
-        <v-col cols="12" sm="6" md="2">
+        <v-col cols="12" sm="6" md="1">
           <h1>
             {{ productElement }}<sub>{{ thirdSubscript }}</sub>
           </h1>
@@ -70,6 +87,7 @@
           <v-row justify="center">
             <v-btn
               :disabled="lockBalanceButton"
+              color="primary"
               @click="balanceButtonPressed"
               small
               >Submit!</v-btn
@@ -92,42 +110,37 @@ export default {
       inputDN = inputDN.trim();
       this.score = 0;
       if (inputDN.length >= 1) {
-          this.score += 50;
+        this.score += 50;
       } else {
-          this.reason += " you wrote nothing";
+        this.reason += " you wrote nothing";
       }
-      if (inputDN.search("neutron") != -1 && inputDN.search("proton") != -1
-
-              && inputDN.search("electron") != -1) {
-
-          this.score += 40;
-
+      if (
+        inputDN.search("neutron") != -1 &&
+        inputDN.search("proton") != -1 &&
+        inputDN.search("electron") != -1
+      ) {
+        this.score += 40;
       } else {
-
-          this.reason += " you did not mention ALL THREE sub-atomic particles";
-
+        this.reason += " you did not mention ALL THREE sub-atomic particles";
       }
 
-      if ((inputDN.search("building") != -1)
-          || (inputDN.search("block") != -1 || inputDN.search("make") != -1)
-          || (inputDN.search("fundamental") != -1)
-          || (inputDN.search("important") != -1)) {
-          this.score += 10;
-
+      if (
+        inputDN.search("building") != -1 ||
+        inputDN.search("block") != -1 || inputDN.search("make") != -1 ||
+        inputDN.search("fundamental") != -1 ||
+        inputDN.search("important") != -1
+      ) {
+        this.score += 10;
       } else {
-
-          this.reason += " you did not say it's the building block of all things";
-
+        this.reason += " you did not say it's the building block of all things";
       }
-
-      
     },
     processName(inputName) {
       inputName = inputName.toLowerCase();
       inputName = inputName.trim();
-      console.log('value of inputName is ' + inputName);
-      console.log('type is ' + typeof(inputName));
-      if (inputName.includes('kai')) {
+      console.log("value of inputName is " + inputName);
+      console.log("type is " + typeof inputName);
+      if (inputName.includes("kai")) {
         this.questionText =
           "KAI?!  GET OUT OF MY CLASS.  Just kidding.  You're a very good student.";
         this.firstGrade = "A";
@@ -148,10 +161,9 @@ export default {
         this.firstGrade = "B+";
         this.questionText = "(click submit to continue)";
       }
-      
     },
     validateBalance(firstCoeff, secondCoeff, thirdCoeff) {
-      if(firstCoeff == 2 && secondCoeff == 3 && thirdCoeff == 2) {
+      if (firstCoeff == 2 && secondCoeff == 3 && thirdCoeff == 2) {
         return true;
       } else {
         return false;
@@ -168,39 +180,45 @@ export default {
         var fullStr =
           this.inputAnswer +
           ", come to the board. Prove that you deserve your " +
-          this.firstGrade + ' by balancing the chemical equation below';
+          this.firstGrade +
+          " by balancing the chemical equation below";
         this.questionText = fullStr;
         this.firstElement = "Fe";
         this.secondElement = "Cl";
         this.productElement = "FeCl";
+        this.secondSubscript = 2;
+        this.thirdSubscript = 3;
         this.lockBalanceButton = false;
-      }
-
-      else if(this.clickCount == 3) {
-        this.questionText = 'DO NOW';
-        this.questionTextLineTwo = 'This is a short answer question.  \nYou are to write everything you know about the atom.\n\nWhat is it made of?  \nWhat is its significance?\n\nYou will be given a score out of 100 based on your short answer response:';
-      }
-      else if(this.clickCount == 4) {
+      } else if (this.clickCount == 3) {
+        this.questionText = "DO NOW";
+        this.questionTextLineTwo =
+          "This is a short answer question.  \nYou are to write everything you know about the atom.\n\nWhat is it made of?  \nWhat is its significance?\n\nYou will be given a score out of 100 based on your short answer response:";
+      } else if (this.clickCount == 4) {
         this.parseDoNow(this.inputAnswer);
-        this.questionText = 'Your score is ' + this.score + ' because ' + this.reason + ' (Click to continue)';
-        
-      }
-      else if(this.clickCount == 5) {
+        this.questionText =
+          "Your score is " +
+          this.score +
+          " because " +
+          this.reason +
+          " (Click to continue)";
+      } else if (this.clickCount == 5) {
         this.questionText = "All right class, time for your lesson.";
       }
-
     },
     balanceButtonPressed() {
-       var isCorrect = this.validateBalance(parseInt(this.firstCoeff), parseInt(this.secondCoeff), parseInt(this.thirdCoeff));
-       this.questionText = 'IS THAT THE ANSWER, CLASS?';
-       if(isCorrect) {
-
-         this.questionTextLineTwo += 'YES';
-       } else {
-         this.questionTextLineTwo += 'NO';
-       }
-       this.questionTextLineTwo += ' (Click submit to continue)'
-       this.lockBalanceButton = true;
+      var isCorrect = this.validateBalance(
+        parseInt(this.firstCoeff),
+        parseInt(this.secondCoeff),
+        parseInt(this.thirdCoeff)
+      );
+      this.questionText = "IS THAT THE ANSWER, CLASS?";
+      if (isCorrect) {
+        this.questionTextLineTwo += "YES";
+      } else {
+        this.questionTextLineTwo += "NO";
+      }
+      this.questionTextLineTwo += " (Click submit to continue)";
+      this.lockBalanceButton = true;
     }
   },
 
