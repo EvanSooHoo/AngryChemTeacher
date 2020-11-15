@@ -36,7 +36,13 @@
     <p class="text-center">Lecture section</p>
     <v-card>
       <v-container fluid>
-        <v-textarea></v-textarea>
+        <v-card value="lecture1Text">{{lecture1Text}}</v-card>
+        <v-row class="text-right">
+          <v-col cols="12" sm="6" md="12" >
+            <v-btn  :disabled="lockLecture1" small color="green">Lecture 1
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-container>
     </v-card>
     <v-container>
@@ -53,7 +59,7 @@
           </h1>
         </v-col>
 
-        <v-col cols="12" sm="6" md="2">
+        <v-col cols="12" sm="6" md="1">
           <v-icon large color="blue darken-2">
             mdi-plus
           </v-icon>
@@ -63,7 +69,7 @@
           <v-text-field v-model="secondCoeff" outlined></v-text-field>
         </v-col>
 
-        <v-col cols="12" sm="6" md="1">
+        <v-col cols="12" sm="6" md="2">
           <h1>
             {{ secondElement }}<sub>{{ secondSubscript }}</sub>
           </h1>
@@ -74,11 +80,11 @@
           </v-icon>
         </v-col>
 
-        <v-col cols="12" sm="6" md="1">
+        <v-col cols="12" sm="6" md="2">
           <v-text-field v-model="thirdCoeff" outlined></v-text-field>
         </v-col>
 
-        <v-col cols="12" sm="6" md="1">
+        <v-col cols="12" sm="6" md="2">
           <h1>
             {{ productElement }}<sub>{{ thirdSubscript }}</sub>
           </h1>
@@ -100,6 +106,7 @@
 </template>
 
 <script>
+import lecture1 from "./Lecture1.txt";
 export default {
   name: "App",
 
@@ -126,7 +133,8 @@ export default {
 
       if (
         inputDN.search("building") != -1 ||
-        inputDN.search("block") != -1 || inputDN.search("make") != -1 ||
+        inputDN.search("block") != -1 ||
+        inputDN.search("make") != -1 ||
         inputDN.search("fundamental") != -1 ||
         inputDN.search("important") != -1
       ) {
@@ -170,6 +178,7 @@ export default {
       }
     },
     buttonPressed() {
+      console.log({ lecture1 });
       this.clickCount++;
       console.log(
         "Button pressed. value of input answer is " + this.inputAnswer
@@ -195,6 +204,7 @@ export default {
           "This is a short answer question.  \nYou are to write everything you know about the atom.\n\nWhat is it made of?  \nWhat is its significance?\n\nYou will be given a score out of 100 based on your short answer response:";
       } else if (this.clickCount == 4) {
         this.parseDoNow(this.inputAnswer);
+        this.questionTextLineTwo = "";
         this.questionText =
           "Your score is " +
           this.score +
@@ -203,6 +213,8 @@ export default {
           " (Click to continue)";
       } else if (this.clickCount == 5) {
         this.questionText = "All right class, time for your lesson.";
+        this.lockLecture1 = false;
+        this.lecture1Text = lecture1;
       }
     },
     balanceButtonPressed() {
@@ -241,7 +253,9 @@ export default {
     secondCoeff: "",
     thirdCoeff: "",
     score: 0,
-    reason: ""
+    reason: "",
+    lockLecture1: true,
+    lecture1Text: "",
   })
 };
 </script>
