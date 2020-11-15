@@ -116,6 +116,10 @@ export default {
 
   components: {},
   methods: {
+    grabNumber(inputStr){
+      inputStr = inputStr.trim();
+      return parseInt(inputStr, 10);
+    },
     parseDoNow(inputDN) {
       inputDN = inputDN.toLowerCase();
       inputDN = inputDN.trim();
@@ -182,7 +186,6 @@ export default {
       }
     },
     buttonPressed() {
-      console.log({ lecture1 });
       this.clickCount++;
       console.log(
         "Button pressed. value of input answer is " + this.inputAnswer
@@ -216,13 +219,40 @@ export default {
           this.reason +
           " (Click to continue)";
       } else if (this.clickCount == 5) {
-        this.questionText = "All right class, time for your lesson.";
+        this.questionText = "All right class, time for your lesson. Click submit when you are done reading.";
         this.lockLecture1 = false;
         this.lecture1Text = lecture1;
         this.lecture1Text = this.lecture1Text.replace(
           /(?:\r\n|\r|\n)/g,
           "<br/>"
         );
+      } else if (this.clickCount == 6) {
+        this.questionText = "DO YOUR DO NOW. How many significant figures does 4320 have? (enter number and submit)";
+        this.scoreTwo = 0;
+      } else if(this.clickCount == 7) {
+        
+        this.significantNumber = this.grabNumber(this.inputAnswer);
+        if(this.significantNumber == 3) {
+          this.scoreTwo += 25;
+        }
+        this.questionText = "Question 2:  How many significant figures does 6.20 have?";
+      } else if(this.clickCount == 8) {
+        this.significantNumber = this.grabNumber(this.inputAnswer);
+        if(this.significantNumber == 3) {
+          this.scoreTwo += 25;
+        }
+        this.questionText = "Question 3:  How many centimeters are in 6.2 meters?";
+      } else if(this.clickCount == 9) {
+        this.significantNumber = this.grabNumber(this.inputAnswer);
+        if(this.significantNumber == 6200) {
+          console.log('ya you said 6200');
+          this.scoreTwo += 25;
+        } 
+        this.scoreTwo += 25; //the curve lol
+        this.questionText = "Your do now score is " + this.scoreTwo + " (hit submit to continue)";
+      }
+      else if (this.clickCount == 10){
+        this.questionText = "App demo complete. PM me if you would like to see more";
       }
     },
     balanceButtonPressed() {
@@ -261,9 +291,11 @@ export default {
     secondCoeff: "",
     thirdCoeff: "",
     score: 0,
+    scoreTwo: 0,
     reason: "",
     lockLecture1: true,
-    lecture1Text: ""
+    lecture1Text: "",
+    significantNumber: 0
   })
 };
 </script>
