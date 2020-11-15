@@ -1,5 +1,6 @@
 module.exports = {
-  chainWebpack: config => {
+   publicPath: '/AngryChemTeacher/',
+   chainWebpack: config => {
     config.module
       .rule('raw')
       .test(/\.txt$/)
